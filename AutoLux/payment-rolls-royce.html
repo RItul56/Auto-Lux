@@ -1,0 +1,198 @@
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payment</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
+    body { background: #f5f5f5; }
+    header {
+      background: #222; color: #fff; padding: 15px 20px;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    header .logo { font-size: 20px; font-weight: bold; }
+    nav a { color: #fff; margin-left: 15px; text-decoration: none; }
+    main.container {
+      display: flex; gap: 20px; max-width: 1100px;
+      margin: 20px auto; padding: 20px;
+    }
+    .payment-form, .order-summary {
+      background: #fff; padding: 20px; border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    .payment-form { flex: 2; }
+    .order-summary { flex: 1; }
+    h2, h3 { margin-bottom: 15px; color: #333; }
+    label { display: block; margin: 8px 0 5px; }
+    input, textarea, select {
+      width: 100%; padding: 10px; margin-bottom: 12px;
+      border: 1px solid #ccc; border-radius: 6px;
+    }
+    textarea { resize: none; height: 70px; }
+    .payment-option {
+      border: 1px solid #ddd; padding: 15px; margin-bottom: 15px;
+      border-radius: 10px; transition: 0.3s; cursor: pointer;
+    }
+    .payment-option:hover { background: #f9f9f9; }
+    .payment-option input[type="radio"] { margin-right: 8px; }
+    .details { display: none; margin-top: 10px; }
+    .qr-code { text-align: center; margin-top: 10px; }
+    .qr-code img { width: 180px; }
+    .summary-item { display: flex; justify-content: space-between; margin: 10px 0; }
+    .total { font-weight: bold; font-size: 18px; }
+    .booking { font-weight: bold; font-size: 14.5px; color: goldenrod;}
+    .button {
+      width: 100%; padding: 12px; background: #28a745; color: white;
+      border: none; border-radius: 8px; font-size: 16px; cursor: pointer;
+    }
+    .button:hover { background: #218838; }
+    #TAX{
+        color: green;
+    }
+    #Discount{
+        color: red;
+    }
+    footer {
+      text-align: center; background: #222; color: #fff;
+      padding: 15p
+      x; margin-top: 30px;
+    }
+  </style>
+  <script>
+    function showDetails(id) {
+      let sections = document.querySelectorAll('.details');
+      sections.forEach(sec => sec.style.display = "none");
+      document.getElementById(id).style.display = "block";
+    }
+  </script>
+</head>
+<body>
+  <header>
+    <div class="logo">AutoLux Motors</div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="#">Help</a>
+      <a href="#">Contact</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <!-- Left: Checkout Form -->
+    <div class="payment-form">
+      <h2>Checkout</h2>
+
+      <!-- Shipping Details -->
+      <section>
+        <h3>Shipping Details</h3>
+        <form>
+          <label>Full Name</label>
+          <input type="text" placeholder="Enter your full name" required>
+          <label>Email</label>
+          <input type="email" placeholder="Enter your email" required>
+          <label>Address</label>
+          <textarea placeholder="Enter shipping address" required></textarea>
+          <label>City</label>
+          <input type="text" placeholder="Enter city" required>
+          <label>Postal Code</label>
+          <input type="text" placeholder="Enter postal code" required>
+        </form>
+      </section>
+
+      <!-- Payment Methods -->
+      <section>
+        <h3>Payment Method</h3>
+
+        <!-- UPI -->
+        <div class="payment-option" onclick="showDetails('upi')">
+          <input type="radio" name="payment"> UPI
+          <div class="details" id="upi">
+            <label>Enter UPI ID:</label>
+            <input type="text" placeholder="example@upi">
+            <div class="qr-code">
+              <p>Or Scan QR Code</p>
+              <img src="qr_img.png" alt="QR Code">
+            </div>
+          </div>
+        </div>
+
+        <!-- Card -->
+        <div class="payment-option" onclick="showDetails('card')">
+          <input type="radio" name="payment"> Debit / Credit Card
+          <div class="details" id="card">
+            <label>Card Number</label>
+            <input type="text" placeholder="xxxx-xxxx-xxxx-xxxx">
+            <label>Expiry Date</label>
+            <input type="month">
+            <label>CVV</label>
+            <input type="password" maxlength="3" placeholder="***">
+          </div>
+        </div>
+
+        <!-- Net Banking -->
+        <div class="payment-option" onclick="showDetails('netbanking')">
+          <input type="radio" name="payment"> Net Banking
+          <div class="details" id="netbanking">
+            <label>Select Bank</label>
+            <select>
+              <option>--Choose Bank--</option>
+              <option>SBI</option>
+              <option>HDFC</option>
+              <option>ICICI</option>
+              <option>Axis Bank</option>
+              <option>Punjab National Bank</option>
+              <option>Bank of Baroda</option>
+              <option>Canara Bank</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Wallets -->
+        <div class="payment-option" onclick="showDetails('wallet')">
+          <input type="radio" name="payment"> Wallets
+          <div class="details" id="wallet">
+            <label>Select Wallet</label>
+            <select>
+              <option>Paytm</option>
+              <option>PhonePe</option>
+              <option>Google Pay</option>
+              <option>Amazon Pay</option>
+            </select>
+            <label>Wallet Number</label>
+            <input type="text" placeholder="Enter Mobile Number">
+          </div>
+        </div>
+
+        <!-- Cash on Delivery -->
+        <div class="payment-option" onclick="showDetails('cod')">
+          <input type="radio" name="payment"> Cash on Delivery
+          <div class="details" id="cod">
+            <p>You can pay in cash when your vehicle is delivered.</p>
+          </div>
+        </div>
+      </section>
+
+      <a href="royce-order_payment.html" class="button">Place Order</a>
+    </div>
+  
+    <!-- Right: Order Summary -->
+    <div class="order-summary">
+      <h3>Order Summary</h3>
+      <div class="summary-item"><span>Product:</span><span>Rolls-Royce Phantom</span></div>
+      <div class="summary-item"><span>Price:</span><span>₹5,17,83,898</span></div>
+      <div class="summary-item" id="Discount"><span>Discount:</span><span>- ₹5,00,000</span></div>
+        <div class="summary-item" id="TAX"><span>Tax Applied:</span><span>+₹35,06,300</span></div>
+          <div class="summary-item" id="TAX"><span>GST:</span><span>+₹21,25,430</span></div>
+      <hr>
+      <div class="summary-item total"><span>Total:</span><span>₹5,69,15,628</span></div>
+      <hr>
+      <br>
+      <br>
+      <div class="booking"><span>Booking Cost(To be paid right now):</span><span>₹25,00,000</span></div>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 AutoLux Motors </p>
+  </footer>
+</body>
+</html>

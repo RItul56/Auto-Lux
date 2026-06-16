@@ -1,0 +1,128 @@
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Confirmation - AutoLux Motors</title>
+  <style>
+    /* Global Reset */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Segoe UI', Tahoma, sans-serif; background: #f4f4f9; color: #333; }
+
+    /* Header */
+    header {
+      background: #111;
+      color: #fff;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    header h1 { font-size: 24px; }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 10px;
+      font-size: 16px;
+    }
+    nav a:hover { color: #ffcc00; }
+
+    /* Main */
+    .container {
+      max-width: 800px;
+      margin: 40px auto;
+      background: #fff;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .thankyou-msg {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .thankyou-msg h2 { color: #28a745; font-size: 26px; margin-bottom: 10px; }
+    .thankyou-msg p { font-size: 16px; }
+
+    /* Invoice */
+    .invoice {
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 20px;
+      margin-top: 20px;
+    }
+    .invoice h3 {
+      margin-bottom: 15px;
+      border-bottom: 2px solid #333;
+      padding-bottom: 5px;
+    }
+    .invoice table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 15px;
+    }
+    .invoice table th, .invoice table td {
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: left;
+    }
+    .invoice table th { background: #f4f4f4; }
+    .total { text-align: right; font-weight: bold; font-size: 18px; }
+
+    /* Footer */
+    footer {
+      background: #111;
+      color: #fff;
+      text-align: center;
+      padding: 15px;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <h1>AutoLux Motors</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="#">Shelf</a>
+      <a href="#">Custom</a>
+      <a href="#">Contact</a>
+      <a href="#">About Us</a>
+    </nav>
+  </header>
+
+  <!-- Thank You Message + Invoice -->
+  <div class="container">
+    <div class="thankyou-msg">
+      <h2>Thank You for Your Order!</h2>
+      <p>Your order has been placed successfully. Below is your invoice.</p>
+    </div>
+
+    <div class="invoice">
+      <h3>Invoice</h3>
+      <p><strong>Order ID:</strong> #GTRNISMON198</p>
+      <p><strong>Date:</strong> 21-Aug-2025</p>
+      <p><strong>Payment Method:</strong> Credit Card</p>
+
+      <table>
+        <tr>
+          <th>Item</th>
+          <th>Qty</th>
+          <th>Price</th>
+          <th>Total</th>
+        </tr>
+        <tr>
+          <td>Nissan GTR NISMON</td>
+          <td>1</td>
+          <td>₹1,93,21,867</td>
+          <td>₹2,36,55,477</td>
+        </tr>
+      </table>
+      <p class="total">Grand Total: ₹2,36,55,477</p>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 AutoLux Motors. All rights reserved.</p>
+  </footer>
+</body>
+</html>
